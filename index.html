@@ -3,86 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TechniCare - Teknoloji ve Kişisel Bakım</title>
+  <title>TechniCare – Teknoloji &amp; Kişisel Bakım</title>
+  <meta name="description" content="TechniCare ile en yeni teknoloji ekipmanları ve kişisel bakım ürünlerini keşfedin. Hızlı, güvenli alışveriş.">
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
-    header { background: #111; color: white; padding: 20px; text-align: center; }
-    nav { background: #333; display: flex; justify-content: center; padding: 10px 0; flex-wrap: wrap; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .banner { background: #f2f2f2; padding: 40px 20px; text-align: center; }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
-    .product { background: white; border-radius: 8px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
-    .product img { width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px; }
-    .price { color: #d40000; font-size: 1.2em; margin: 10px 0; }
-    .sepete-ekle { display: inline-block; background: #007BFF; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none; margin: 5px; }
-    .whatsapp-button { background: #25D366; display: inline-block; padding: 8px 12px; border-radius: 4px; color: white; text-decoration: none; margin: 5px; }
-    .social { text-align: center; margin-top: 30px; }
-    .social a { margin: 0 10px; font-size: 24px; color: #444; text-decoration: none; }
-    footer { background: #111; color: white; text-align: center; padding: 20px; font-size: 0.9em; }
-    @media (max-width: 600px) {
-      .banner h2 { font-size: 20px; }
-      nav { flex-direction: column; }
-      nav a { margin: 8px 0; }
+    /* Reset & Box-Sizing */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --brand-dark: #111;
+      --brand-primary: #007BFF;
+      --brand-accent: #25D366;
+      --text-light: #fff;
+      --text-dark: #222;
+      --bg-light: #f8f8f8;
+      --transition: 0.3s ease;
     }
-  </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
-<body>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--bg-light);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; transition: var(--transition); }
+    img { max-width: 100%; display: block; }
 
-<header>
-  <h1>TechniCare</h1>
-  <p>Teknoloji ve Kişisel Bakım Ürünleri</p>
-</header>
+    /* Header */
+    header {
+      background: var(--brand-dark);
+      color: var(--text-light);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav a {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    nav a:hover { color: var(--brand-primary); }
 
-<nav>
-  <a href="#">Anasayfa</a>
-  <a href="#urunler">Ürünler</a>
-  <a href="#hakkimizda">Hakkımızda</a>
-  <a href="#gizlilik">Gizlilik</a>
-  <a href="#iletisim">İletişim</a>
-</nav>
+    /* Hero */
+    .hero {
+      background: url('https://via.placeholder.com/1200x400?text=TechniCare+Banner') center/cover no-repeat;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-light);
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero h1 {
+      position: relative;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      z-index: 1;
+    }
+    .hero p {
+      position: relative;
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      z-index: 1;
+    }
 
-<div class="banner">
-  <h2>Yeni Sezon Ürünler Stokta!</h2>
-  <p>Teknolojiyi ve bakımı bir arada keşfet.</p>
-</div>
-
-<section class="products" id="urunler">
-  <div class="product">
-    <img src="https://via.placeholder.com/200x150?text=Kablosuz+Kulaklık" alt="Kulaklık">
-    <h3>Kablosuz Kulaklık</h3>
-    <p class="price">599 TL</p>
-    <a class="sepete-ekle" href="#">Sepete Ekle</a>
-    <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp Sipariş</a>
-  </div>
-  <div class="product">
-    <img src="https://via.placeholder.com/200x150?text=Saç+Serumu" alt="Saç Serumu">
-    <h3>Saç Bakım Serumu</h3>
-    <p class="price">199 TL</p>
-    <a class="sepete-ekle" href="#">Sepete Ekle</a>
-    <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp Sipariş</a>
-  </div>
-</section>
-
-<section class="social">
-  <a href="#"><i class="fab fa-instagram"></i></a>
-  <a href="#"><i class="fab fa-tiktok"></i></a>
-</section>
-
-<section id="hakkimizda" style="padding: 20px; max-width: 800px; margin: auto;">
-  <h2>Hakkımızda</h2>
-  <p>TechniCare olarak amacımız en iyi teknoloji ve kişisel bakım ürünlerini sizlerle buluşturmak. Güvenilir alışveriş, hızlı teslimat ve müşteri memnuniyeti önceliğimizdir.</p>
-</section>
-
-<section id="gizlilik" style="padding: 20px; max-width: 800px; margin: auto;">
-  <h2>Gizlilik Politikası</h2>
-  <p>Sitemizde yaptığınız alışverişler güvenli şekilde korunur. Kişisel bilgileriniz üçüncü şahıslarla paylaşılmaz. KVKK kapsamında tüm haklara saygılıyız.</p>
-</section>
-
-<footer id="iletisim">
-  <p>İletişim: +90 5xx xxx xx xx | info@technicare.com</p>
-  <p>&copy; 2025 TechniCare | Tüm hakları saklıdır.</p>
-</footer>
-
-</body>
-</html>
+    /* Ürünler */
+    .products {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+    .product {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+    .product img { height: 180px; object-fit: cover; }
+    .product-body {
+      flex: 1;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product h3 {
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 0.5rem;
+      color: var(--brand-primary);
+    }
+    .price {
+      color: #d40000;
+      font-size: 1.2rem;
+      margin: 1rem 0;
+    }
+    .buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
