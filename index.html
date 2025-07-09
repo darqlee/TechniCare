@@ -1,169 +1,276 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head><!DOCTYPE html>
-<html lang="tr">
 <head>
-  ...
-  <!-- Firebase SDK’ları -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
-
-  <script>
-    // YOUR CONFIG: buraya Firebase konsoldaki config bloğunu yapıştırın
-    const firebaseConfig = {
-      apiKey: "AIzaSyDXYZxmX9Ps6zK80TST_eqWeWCk6I13D9M0",
-      authDomain: "technicare-auth.firebaseapp.com",
-      projectId: "technicare-auth",
-      storageBucket: "technicare-auth.appspot.com",
-      messagingSenderId: "278003907575",
-      appId: "1:278003907575:web:d39e654659dce8bd860cf2",
-      measurementId: "G-VVPKJPJ154"
-    };
-    // Firebase’i başlat
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-  </script>
-</head>
-<body>
-  ...
-  <!-- Buraya kayıt/giriş formu ve auth.js kodları gelecek -->
-</body>
-</html>
-
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>TechniCare Marketplace</title>
-  <meta name="description" content="TechniCare—Teknoloji ve Kişisel Bakım Ürünleri Pazaryeri">
-  <link rel="icon" href="favicon.ico">
+  <meta name="description" content="TechniCare—Teknoloji ve Kişisel Bakım Ürünleri Pazaryeri"/>
+  <link rel="icon" href="favicon.ico"/>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
   <!-- FontAwesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script
+    src="https://kit.fontawesome.com/a076d05399.js"
+    crossorigin="anonymous"
+  ></script>
   <style>
     :root {
-      --primary: #007BFF;
+      --primary: #007bff;
       --dark: #111;
       --light: #f8f8f8;
       --text: #333;
-      --transition: .3s;
+      --transition: 0.3s;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'Poppins',sans-serif; color:var(--text); background:var(--light); }
-    a { text-decoration:none; color:inherit; transition: var(--transition); }
-    img { max-width:100%; display:block; }
-
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
     /* HEADER */
     header {
       background: var(--dark);
       color: #fff;
-      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 1rem 2rem;
     }
-    .logo { font-size:1.5rem; font-weight:600; }
-    .nav-links { display:flex; gap:1.5rem; }
-    .nav-links a { color:#fff; font-weight:500; }
-    .nav-links a:hover { color: var(--primary); }
-    .cart { position:relative; }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    nav.nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    nav.nav-links a {
+      color: #fff;
+      font-weight: 500;
+    }
+    nav.nav-links a:hover {
+      color: var(--primary);
+    }
+    .cart {
+      position: relative;
+    }
     .cart .badge {
-      position:absolute;
-      top:-6px; right:-10px;
-      background:red; color:#fff;
-      font-size:.7rem; padding:2px 5px; border-radius:50%;
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: red;
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 2px 5px;
+      border-radius: 50%;
     }
-
+    /* AUTH FORM */
+    #auth {
+      background: #fff;
+      max-width: 400px;
+      margin: 1rem auto;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    #auth h2 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    #auth input {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.4rem 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    #auth .btns {
+      display: flex;
+      gap: 0.5rem;
+    }
+    #auth button {
+      flex: 1;
+      padding: 0.6rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    #auth .signup {
+      background: #28a745;
+      color: #fff;
+    }
+    #auth .signin {
+      background: var(--primary);
+      color: #fff;
+    }
+    #auth .signout {
+      background: #dc3545;
+      color: #fff;
+    }
+    #auth #auth-msg {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: red;
+      text-align: center;
+    }
     /* SEARCH BAR */
     .search-area {
-      background:#fff;
-      padding:1rem 2rem;
-      display:flex;
-      gap:.5rem;
-      align-items:center;
-      box-shadow:0 2px 8px rgba(0,0,0,.1);
+      background: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .search-area select,
     .search-area input {
-      padding:.5rem;
-      font-size:1rem;
-      border:1px solid #ccc;
-      border-radius:4px;
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
     .search-area button {
-      padding:.6rem 1rem;
-      border:none;
+      padding: 0.6rem 1rem;
+      border: none;
       background: var(--primary);
-      color:#fff;
-      border-radius:4px;
-      cursor:pointer;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
     }
-
     /* LAYOUT */
     .container {
       display: grid;
       grid-template-columns: 250px 1fr;
-      gap:1rem;
-      max-width:1200px;
-      margin:2rem auto;
-      padding:0 1rem;
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
     /* SIDEBAR */
     .sidebar {
-      background:#fff;
-      padding:1rem;
-      border-radius:4px;
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
+      background: #fff;
+      padding: 1rem;
+      border-radius: 4px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
-    .sidebar h4 { margin-bottom:.5rem; font-weight:600; }
-    .sidebar ul { list-style:none; }
-    .sidebar li { margin:.5rem 0; }
-    .sidebar a { color:var(--text); }
-    .sidebar a:hover { color: var(--primary); }
-
+    .sidebar h4 {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar li {
+      margin: 0.5rem 0;
+    }
+    .sidebar a:hover {
+      color: var(--primary);
+    }
     /* PRODUCT GRID */
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
-      gap:1rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
     }
     .product-card {
-      background:#fff;
-      border-radius:6px;
-      overflow:hidden;
-      box-shadow:0 2px 8px rgba(0,0,0,.05);
-      display:flex; flex-direction:column;
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
       transition: var(--transition);
     }
-    .product-card:hover { transform: translateY(-5px); }
-    .product-card img { height:180px; object-fit:cover; }
-    .product-info { padding: .8rem; flex:1; display:flex; flex-direction:column; }
-    .product-info h5 { font-size:1rem; margin-bottom:.5rem; flex:1; }
-    .price { color:#d40000; font-weight:600; margin-bottom:.8rem; }
-    .btn-group { display:flex; gap:.5rem; }
-    .btn-group a {
-      flex:1; text-align:center; padding:.6rem; border-radius:4px;
-      font-size:.9rem; font-weight:500;
+    .product-card:hover {
+      transform: translateY(-5px);
     }
-    .add-cart { background: var(--primary); color:#fff; }
-    .add-cart:hover { background: #0056b3; }
-    .whatsapp { background: #25D366; color:#fff; }
-    .whatsapp:hover { background: #1da851; }
-
+    .product-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 0.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-info h5 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      flex: 1;
+    }
+    .price {
+      color: #d40000;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+    .btn-group {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-group a {
+      flex: 1;
+      text-align: center;
+      padding: 0.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .add-cart {
+      background: var(--primary);
+      color: #fff;
+    }
+    .add-cart:hover {
+      background: #0056b3;
+    }
+    .whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+    .whatsapp:hover {
+      background: #1da851;
+    }
     /* FOOTER */
     footer {
       background: var(--dark);
-      color:#fff;
-      text-align:center;
-      padding:2rem 1rem;
-      margin-top:2rem;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
     }
-    footer a { color: #ccc; }
-    footer a:hover { color: #fff; }
-
+    footer a {
+      color: #ccc;
+    }
+    footer a:hover {
+      color: #fff;
+    }
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .container { grid-template-columns: 1fr; }
-      .nav-links { display:none; }
+      .container {
+        grid-template-columns: 1fr;
+      }
+      nav.nav-links {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -178,10 +285,23 @@
       <a href="#iletisim">İletişim</a>
     </nav>
     <div class="cart">
-      <a href="#"><i class="fas fa-shopping-cart fa-lg" style="color:#fff"></i></a>
-      <span class="badge">3</span>
+      <a href="#"><i class="fas fa-shopping-cart fa-lg"></i></a>
+      <span class="badge">0</span>
     </div>
   </header>
+
+  <!-- AUTH FORM -->
+  <section id="auth">
+    <h2>Üye Ol / Giriş Yap</h2>
+    <input id="email" type="email" placeholder="E-posta"/>
+    <input id="password" type="password" placeholder="Şifre"/>
+    <div class="btns">
+      <button class="signup" onclick="signUp()">Kayıt Ol</button>
+      <button class="signin" onclick="signIn()">Giriş Yap</button>
+      <button class="signout" onclick="signOutUser()">Çıkış Yap</button>
+    </div>
+    <div id="auth-msg"></div>
+  </section>
 
   <!-- SEARCH -->
   <section class="search-area">
@@ -191,10 +311,11 @@
       <option>Kişisel Bakım</option>
       <option>Aksesuar</option>
     </select>
-    <input type="text" placeholder="Ürün, kategori veya marka ara…">
+    <input type="text" placeholder="Ürün, kategori veya marka ara…"/>
     <button><i class="fas fa-search"></i> Ara</button>
   </section>
 
+  <!-- MAIN CONTENT -->
   <div class="container">
     <!-- SIDEBAR -->
     <aside class="sidebar">
@@ -217,43 +338,96 @@
     <!-- ÜRÜNLER -->
     <main>
       <div class="product-grid" id="urunler">
-        <!-- Tekrar ederek çoğalt -->
         <div class="product-card">
-         <img src="images/kulaklık.webp" alt="Kablosuz Kulaklık">
+          <img src="images/kulaklık.webp" alt="Kablosuz Kulaklık"/>
           <div class="product-info">
             <h5>Kablosuz Kulaklık Model X</h5>
             <p class="price">599 TL</p>
             <div class="btn-group">
               <a class="add-cart" href="#">Sepete Ekle</a>
-              <a class="whatsapp" href="https://wa.me/905XXXXXXXXX" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
+              <a
+                class="whatsapp"
+                href="https://wa.me/905XXXXXXXXX"
+                target="_blank"
+              ><i class="fab fa-whatsapp"></i></a>
             </div>
           </div>
         </div>
-        <div class="product-card">
-          <img src="https://via.placeholder.com/400x300?text=Saç+Bakım+Serumu" alt="Saç Serumu">
-          <div class="product-info">
-            <h5>Saç Bakım Serumu Pro</h5>
-            <p class="price">199 TL</p>
-            <div class="btn-group">
-              <a class="add-cart" href="#">Sepete Ekle</a>
-              <a class="whatsapp" href="https://wa.me/905XXXXXXXXX" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <!-- … daha fazla ürün kartı burada … -->
+        <!-- Daha fazla kartı çoğaltın -->
       </div>
     </main>
   </div>
 
   <!-- FOOTER -->
   <footer id="iletisim">
-    <p>© 2025 TechniCare Marketplace • <a href="#hakkimizda">Hakkımızda</a> • <a href="#gizlilik">Gizlilik</a></p>
-    <p>İletişim: info@technicare.com • +90 544 158 01 08 xx</p>
+    <p>
+      © 2025 TechniCare Marketplace • <a href="#auth">Üyelik</a> • <a
+        href="#iletisim"
+        >İletişim</a
+      >
+    </p>
+    <p>İletişim: info@technicare.com • +90 5xx xxx xx xx</p>
   </footer>
 
+  <!-- FIREBASE MODULE & AUTH/ANALYTICS SETUP -->
+  <script type="module">
+    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      signOut,
+      onAuthStateChanged
+    } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js';
+
+    // Sizin Firebase konsolunuzdan aldığınız config bloğu:
+    const firebaseConfig = {
+      apiKey: "AIzaSyDXZxmX9Ps6zK8OTST_eqWeWCk6Il3D9M0",
+      authDomain: "technicare-auth.firebaseapp.com",
+      projectId: "technicare-auth",
+      storageBucket: "technicare-auth.firebasestorage.app",
+      messagingSenderId: "278003907575",
+      appId: "1:278003907575:web:d39e654659dce8bd860cf2",
+      measurementId: "G-VVPKJPJ154"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const analytics = getAnalytics(app);
+
+    // Üyelik fonksiyonları
+    async function signUp() {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      try {
+        const userCred = await createUserWithEmailAndPassword(auth, email, pass);
+        alert('Kayıt başarılı: ' + userCred.user.email);
+      } catch (err) {
+        document.getElementById('auth-msg').textContent = err.message;
+      }
+    }
+
+    async function signIn() {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      try {
+        const userCred = await signInWithEmailAndPassword(auth, email, pass);
+        alert('Giriş başarılı: ' + userCred.user.email);
+      } catch (err) {
+        document.getElementById('auth-msg').textContent = err.message;
+      }
+    }
+
+    async function signOutUser() {
+      await signOut(auth);
+      alert('Oturum kapatıldı.');
+    }
+
+    onAuthStateChanged(auth, (user) => {
+      document.querySelector('.badge').textContent = user ? '1' : '0';
+    });
+  </script>
 </body>
 </html>
