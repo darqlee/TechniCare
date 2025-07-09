@@ -5,25 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TechniCare - Teknoloji ve Kişisel Bakım</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f8f8f8; }
     header { background: #111; color: white; padding: 20px; text-align: center; }
-    nav { background: #444; color: white; padding: 10px; text-align: center; }
-    nav a { color: white; margin: 0 10px; text-decoration: none; }
-    .banner { background: #eee; padding: 40px; text-align: center; }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px; }
-    .product { border: 1px solid #ccc; padding: 15px; text-align: center; }
-    .product img { width: 100%; max-height: 150px; object-fit: cover; }
-    .whatsapp-button {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
+    nav { background: #333; display: flex; justify-content: center; padding: 10px 0; flex-wrap: wrap; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    .banner { background: #f2f2f2; padding: 40px 20px; text-align: center; }
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
+    .product { background: white; border-radius: 8px; padding: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    .product img { width: 100%; max-height: 150px; object-fit: cover; border-radius: 6px; }
+    .price { color: #d40000; font-size: 1.2em; margin: 10px 0; }
+    .sepete-ekle { display: inline-block; background: #007BFF; color: white; padding: 8px 12px; border-radius: 4px; text-decoration: none; margin: 5px; }
+    .whatsapp-button { background: #25D366; display: inline-block; padding: 8px 12px; border-radius: 4px; color: white; text-decoration: none; margin: 5px; }
+    .social { text-align: center; margin-top: 30px; }
+    .social a { margin: 0 10px; font-size: 24px; color: #444; text-decoration: none; }
+    footer { background: #111; color: white; text-align: center; padding: 20px; font-size: 0.9em; }
+    @media (max-width: 600px) {
+      .banner h2 { font-size: 20px; }
+      nav { flex-direction: column; }
+      nav a { margin: 8px 0; }
     }
-    footer { background: #111; color: white; text-align: center; padding: 10px; }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -35,6 +37,8 @@
 <nav>
   <a href="#">Anasayfa</a>
   <a href="#urunler">Ürünler</a>
+  <a href="#hakkimizda">Hakkımızda</a>
+  <a href="#gizlilik">Gizlilik</a>
   <a href="#iletisim">İletişim</a>
 </nav>
 
@@ -45,10 +49,40 @@
 
 <section class="products" id="urunler">
   <div class="product">
-    <img src="https://via.placeholder.com/200x150?text=Kablosuz+Kulaklık" alt="Kablosuz Kulaklık">
+    <img src="https://via.placeholder.com/200x150?text=Kablosuz+Kulaklık" alt="Kulaklık">
     <h3>Kablosuz Kulaklık</h3>
-    <p>599 TL</p>
-    <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">Sipariş Ver</a>
+    <p class="price">599 TL</p>
+    <a class="sepete-ekle" href="#">Sepete Ekle</a>
+    <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp Sipariş</a>
   </div>
   <div class="product">
-    <img src="https://via.placeholder.com/200x150?text=Saç+Bakım+Serumu
+    <img src="https://via.placeholder.com/200x150?text=Saç+Serumu" alt="Saç Serumu">
+    <h3>Saç Bakım Serumu</h3>
+    <p class="price">199 TL</p>
+    <a class="sepete-ekle" href="#">Sepete Ekle</a>
+    <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp Sipariş</a>
+  </div>
+</section>
+
+<section class="social">
+  <a href="#"><i class="fab fa-instagram"></i></a>
+  <a href="#"><i class="fab fa-tiktok"></i></a>
+</section>
+
+<section id="hakkimizda" style="padding: 20px; max-width: 800px; margin: auto;">
+  <h2>Hakkımızda</h2>
+  <p>TechniCare olarak amacımız en iyi teknoloji ve kişisel bakım ürünlerini sizlerle buluşturmak. Güvenilir alışveriş, hızlı teslimat ve müşteri memnuniyeti önceliğimizdir.</p>
+</section>
+
+<section id="gizlilik" style="padding: 20px; max-width: 800px; margin: auto;">
+  <h2>Gizlilik Politikası</h2>
+  <p>Sitemizde yaptığınız alışverişler güvenli şekilde korunur. Kişisel bilgileriniz üçüncü şahıslarla paylaşılmaz. KVKK kapsamında tüm haklara saygılıyız.</p>
+</section>
+
+<footer id="iletisim">
+  <p>İletişim: +90 5xx xxx xx xx | info@technicare.com</p>
+  <p>&copy; 2025 TechniCare | Tüm hakları saklıdır.</p>
+</footer>
+
+</body>
+</html>
