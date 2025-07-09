@@ -3,241 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TechniCare – Teknoloji &amp; Kişisel Bakım</title>
-  <meta name="description" content="TechniCare ile en yeni teknoloji ekipmanları ve kişisel bakım ürünlerini keşfedin. Hızlı, güvenli alışveriş.">
+  <title>TechniCare Marketplace</title>
+  <meta name="description" content="TechniCare—Teknoloji ve Kişisel Bakım Ürünleri Pazaryeri">
   <link rel="icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    /* Reset & Box-Sizing */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --brand-dark: #111;
-      --brand-primary: #007BFF;
-      --brand-accent: #25D366;
-      --text-light: #fff;
-      --text-dark: #222;
-      --bg-light: #f8f8f8;
-      --transition: 0.3s ease;
+      --primary: #007BFF;
+      --dark: #111;
+      --light: #f8f8f8;
+      --text: #333;
+      --transition: .3s;
     }
-    body {
-      font-family: 'Open Sans', sans-serif;
-      color: var(--text-dark);
-      background: var(--bg-light);
-      line-height: 1.6;
-    }
-    a { text-decoration: none; transition: var(--transition); }
-    img { max-width: 100%; display: block; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Poppins',sans-serif; color:var(--text); background:var(--light); }
+    a { text-decoration:none; color:inherit; transition: var(--transition); }
+    img { max-width:100%; display:block; }
 
-    /* Header */
+    /* HEADER */
     header {
-      background: var(--brand-dark);
-      color: var(--text-light);
+      background: var(--dark);
+      color: #fff;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    header .logo {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 600;
-    }
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-    nav a {
-      color: var(--text-light);
-      font-weight: 500;
-    }
-    nav a:hover { color: var(--brand-primary); }
-
-    /* Hero */
-    .hero {
-      background: url('https://via.placeholder.com/1200x400?text=TechniCare+Banner') center/cover no-repeat;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--text-light);
-      position: relative;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero h1 {
-      position: relative;
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.5rem;
-      z-index: 1;
-    }
-    .hero p {
-      position: relative;
-      margin-top: 0.5rem;
-      font-size: 1.1rem;
-      z-index: 1;
+    .logo { font-size:1.5rem; font-weight:600; }
+    .nav-links { display:flex; gap:1.5rem; }
+    .nav-links a { color:#fff; font-weight:500; }
+    .nav-links a:hover { color: var(--primary); }
+    .cart { position:relative; }
+    .cart .badge {
+      position:absolute;
+      top:-6px; right:-10px;
+      background:red; color:#fff;
+      font-size:.7rem; padding:2px 5px; border-radius:50%;
     }
 
-    /* Products */
-    .products {
-      max-width: 1200px;
-      margin: 2rem auto;
+    /* SEARCH BAR */
+    .search-area {
+      background:#fff;
+      padding:1rem 2rem;
+      display:flex;
+      gap:.5rem;
+      align-items:center;
+      box-shadow:0 2px 8px rgba(0,0,0,.1);
+    }
+    .search-area select,
+    .search-area input {
+      padding:.5rem;
+      font-size:1rem;
+      border:1px solid #ccc;
+      border-radius:4px;
+    }
+    .search-area button {
+      padding:.6rem 1rem;
+      border:none;
+      background: var(--primary);
+      color:#fff;
+      border-radius:4px;
+      cursor:pointer;
+    }
+
+    /* LAYOUT */
+    .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-      gap: 1.5rem;
-      padding: 0 1rem;
+      grid-template-columns: 250px 1fr;
+      gap:1rem;
+      max-width:1200px;
+      margin:2rem auto;
+      padding:0 1rem;
     }
-    .product {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      overflow: hidden;
+    /* SIDEBAR */
+    .sidebar {
+      background:#fff;
+      padding:1rem;
+      border-radius:4px;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+    }
+    .sidebar h4 { margin-bottom:.5rem; font-weight:600; }
+    .sidebar ul { list-style:none; }
+    .sidebar li { margin:.5rem 0; }
+    .sidebar a { color:var(--text); }
+    .sidebar a:hover { color: var(--primary); }
+
+    /* PRODUCT GRID */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+      gap:1rem;
+    }
+    .product-card {
+      background:#fff;
+      border-radius:6px;
+      overflow:hidden;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);
+      display:flex; flex-direction:column;
       transition: var(--transition);
-      display: flex;
-      flex-direction: column;
     }
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    .product-card:hover { transform: translateY(-5px); }
+    .product-card img { height:180px; object-fit:cover; }
+    .product-info { padding: .8rem; flex:1; display:flex; flex-direction:column; }
+    .product-info h5 { font-size:1rem; margin-bottom:.5rem; flex:1; }
+    .price { color:#d40000; font-weight:600; margin-bottom:.8rem; }
+    .btn-group { display:flex; gap:.5rem; }
+    .btn-group a {
+      flex:1; text-align:center; padding:.6rem; border-radius:4px;
+      font-size:.9rem; font-weight:500;
     }
-    .product img { height: 180px; object-fit: cover; }
-    .product-body {
-      flex: 1;
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .product h3 {
-      font-family: 'Poppins', sans-serif;
-      margin-bottom: 0.5rem;
-      color: var(--brand-primary);
-    }
-    .price {
-      color: #d40000;
-      font-size: 1.2rem;
-      margin: 1rem 0;
-    }
-    .buttons {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-    .buttons a {
-      flex: 1;
-      text-align: center;
-      padding: 0.7rem;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-    .sepete-ekle {
-      background: var(--brand-primary);
-      color: var(--text-light);
-    }
-    .whatsapp-button {
-      background: var(--brand-accent);
-      color: var(--text-light);
-    }
+    .add-cart { background: var(--primary); color:#fff; }
+    .add-cart:hover { background: #0056b3; }
+    .whatsapp { background: #25D366; color:#fff; }
+    .whatsapp:hover { background: #1da851; }
 
-    /* Social */
-    .social {
-      text-align: center;
-      padding: 2rem 0 1rem;
-    }
-    .social a {
-      font-size: 1.8rem;
-      color: var(--brand-dark);
-      margin: 0 0.5rem;
-    }
-    .social a:hover { color: var(--brand-primary); }
-
-    /* Info sections */
-    section.info {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    section.info h2 {
-      font-family: 'Poppins', sans-serif;
-      color: var(--brand-dark);
-      margin-bottom: 0.5rem;
-    }
-    section.info p { margin-bottom: 1rem; }
-
-    /* Footer */
+    /* FOOTER */
     footer {
-      background: var(--brand-dark);
-      color: var(--text-light);
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.9rem;
+      background: var(--dark);
+      color:#fff;
+      text-align:center;
+      padding:2rem 1rem;
+      margin-top:2rem;
     }
+    footer a { color: #ccc; }
+    footer a:hover { color: #fff; }
 
-    @media (max-width: 600px) {
-      header { flex-direction: column; gap: 1rem; }
-      .hero { height: 300px; }
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+      .nav-links { display:none; }
     }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="logo">TechniCare</div>
-    <nav>
+    <nav class="nav-links">
       <a href="#">Anasayfa</a>
       <a href="#urunler">Ürünler</a>
-      <a href="#hakkimizda">Hakkımızda</a>
-      <a href="#gizlilik">Gizlilik</a>
       <a href="#iletisim">İletişim</a>
     </nav>
+    <div class="cart">
+      <a href="#"><i class="fas fa-shopping-cart fa-lg" style="color:#fff"></i></a>
+      <span class="badge">3</span>
+    </div>
   </header>
 
-  <section class="hero">
-    <div>
-      <h1>Teknolojiyi &amp; Bakımı Bir Arada Yaşa</h1>
-      <p>En yeni ürünlerimizle konfor ve kaliteyi keşfet.</p>
-    </div>
+  <!-- SEARCH -->
+  <section class="search-area">
+    <select>
+      <option>Tüm Kategoriler</option>
+      <option>Elektronik</option>
+      <option>Kişisel Bakım</option>
+      <option>Aksesuar</option>
+    </select>
+    <input type="text" placeholder="Ürün, kategori veya marka ara…">
+    <button><i class="fas fa-search"></i> Ara</button>
   </section>
 
-  <section class="products" id="urunler">
-    <div class="product">
-      <img src="https://via.placeholder.com/400x300?text=Kablosuz+Kulaklık" alt="Kablosuz Kulaklık">
-      <div class="product-body">
-        <h3>Kablosuz Kulaklık</h3>
-        <p class="price">599 TL</p>
-        <div class="buttons">
-          <a class="sepete-ekle" href="#">Sepete Ekle</a>
-          <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp</a>
+  <div class="container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h4>Kategoriler</h4>
+      <ul>
+        <li><a href="#">Akıllı Telefon</a></li>
+        <li><a href="#">Kulaklık</a></li>
+        <li><a href="#">Giyilebilir Teknoloji</a></li>
+        <li><a href="#">Saç Bakım</a></li>
+        <li><a href="#">Kişisel Bakım</a></li>
+      </ul>
+      <h4>Fiyat Aralığı</h4>
+      <ul>
+        <li><a href="#">0–199 TL</a></li>
+        <li><a href="#">200–499 TL</a></li>
+        <li><a href="#">500–999 TL</a></li>
+      </ul>
+    </aside>
+
+    <!-- ÜRÜNLER -->
+    <main>
+      <div class="product-grid" id="urunler">
+        <!-- Tekrar ederek çoğalt -->
+        <div class="product-card">
+          <img src="https://via.placeholder.com/400x300?text=Kablosuz+Kulaklık" alt="Kablosuz Kulaklık">
+          <div class="product-info">
+            <h5>Kablosuz Kulaklık Model X</h5>
+            <p class="price">599 TL</p>
+            <div class="btn-group">
+              <a class="add-cart" href="#">Sepete Ekle</a>
+              <a class="whatsapp" href="https://wa.me/905XXXXXXXXX" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
         </div>
+        <div class="product-card">
+          <img src="https://via.placeholder.com/400x300?text=Saç+Bakım+Serumu" alt="Saç Serumu">
+          <div class="product-info">
+            <h5>Saç Bakım Serumu Pro</h5>
+            <p class="price">199 TL</p>
+            <div class="btn-group">
+              <a class="add-cart" href="#">Sepete Ekle</a>
+              <a class="whatsapp" href="https://wa.me/905XXXXXXXXX" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- … daha fazla ürün kartı burada … -->
       </div>
-    </div>
-    <!-- Bu kartı kopyalayarak yeni ürün ekleyebilirsin -->
-  </section>
-
-  <div class="social">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-tiktok"></i></a>
+    </main>
   </div>
 
-  <section class="info" id="hakkimizda">
-    <h2>Hakkımızda</h2>
-    <p>TechniCare olarak amacımız; teknoloji ve kişisel bakım ürünlerini en güvenilir ve hızlı biçimde sunmak. Müşteri memnuniyeti her zaman önceliğimizdir.</p>
-  </section>
-
-  <section class="info" id="gizlilik">
-    <h2>Gizlilik Politikası</h2>
-    <p>KVKK’ya uygun olarak; kişisel verileriniz güvenle saklanır, üçüncü taraflarla paylaşılmaz.</p>
-  </section>
-
+  <!-- FOOTER -->
   <footer id="iletisim">
-    <p>İletişim: +90 544 158 01 08 | info@technicare.com</p>
-    <p>&copy; 2025 TechniCare | Tüm hakları saklıdır.</p>
+    <p>© 2025 TechniCare Marketplace • <a href="#hakkimizda">Hakkımızda</a> • <a href="#gizlilik">Gizlilik</a></p>
+    <p>İletişim: info@technicare.com • +90 544 158 01 08 xx</p>
   </footer>
 
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
