@@ -1,6 +1,35 @@
 <!DOCTYPE html>
 <html lang="tr">
+<head><!DOCTYPE html>
+<html lang="tr">
 <head>
+  ...
+  <!-- Firebase SDK’ları -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+
+  <script>
+    // YOUR CONFIG: buraya Firebase konsoldaki config bloğunu yapıştırın
+    const firebaseConfig = {
+      apiKey: "AIzaSyDXYZxmX9Ps6zK80TST_eqWeWCk6I13D9M0",
+      authDomain: "technicare-auth.firebaseapp.com",
+      projectId: "technicare-auth",
+      storageBucket: "technicare-auth.appspot.com",
+      messagingSenderId: "278003907575",
+      appId: "1:278003907575:web:d39e654659dce8bd860cf2",
+      measurementId: "G-VVPKJPJ154"
+    };
+    // Firebase’i başlat
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+  </script>
+</head>
+<body>
+  ...
+  <!-- Buraya kayıt/giriş formu ve auth.js kodları gelecek -->
+</body>
+</html>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TechniCare Marketplace</title>
