@@ -82,7 +82,7 @@
       z-index: 1;
     }
 
-    /* Ürünler */
+    /* Products */
     .products {
       max-width: 1200px;
       margin: 2rem auto;
@@ -127,3 +127,117 @@
       gap: 0.5rem;
       flex-wrap: wrap;
     }
+    .buttons a {
+      flex: 1;
+      text-align: center;
+      padding: 0.7rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .sepete-ekle {
+      background: var(--brand-primary);
+      color: var(--text-light);
+    }
+    .whatsapp-button {
+      background: var(--brand-accent);
+      color: var(--text-light);
+    }
+
+    /* Social */
+    .social {
+      text-align: center;
+      padding: 2rem 0 1rem;
+    }
+    .social a {
+      font-size: 1.8rem;
+      color: var(--brand-dark);
+      margin: 0 0.5rem;
+    }
+    .social a:hover { color: var(--brand-primary); }
+
+    /* Info sections */
+    section.info {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section.info h2 {
+      font-family: 'Poppins', sans-serif;
+      color: var(--brand-dark);
+      margin-bottom: 0.5rem;
+    }
+    section.info p { margin-bottom: 1rem; }
+
+    /* Footer */
+    footer {
+      background: var(--brand-dark);
+      color: var(--text-light);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 1rem; }
+      .hero { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">TechniCare</div>
+    <nav>
+      <a href="#">Anasayfa</a>
+      <a href="#urunler">Ürünler</a>
+      <a href="#hakkimizda">Hakkımızda</a>
+      <a href="#gizlilik">Gizlilik</a>
+      <a href="#iletisim">İletişim</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Teknolojiyi &amp; Bakımı Bir Arada Yaşa</h1>
+      <p>En yeni ürünlerimizle konfor ve kaliteyi keşfet.</p>
+    </div>
+  </section>
+
+  <section class="products" id="urunler">
+    <div class="product">
+      <img src="https://via.placeholder.com/400x300?text=Kablosuz+Kulaklık" alt="Kablosuz Kulaklık">
+      <div class="product-body">
+        <h3>Kablosuz Kulaklık</h3>
+        <p class="price">599 TL</p>
+        <div class="buttons">
+          <a class="sepete-ekle" href="#">Sepete Ekle</a>
+          <a class="whatsapp-button" href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <!-- Bu kartı kopyalayarak yeni ürün ekleyebilirsin -->
+  </section>
+
+  <div class="social">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-tiktok"></i></a>
+  </div>
+
+  <section class="info" id="hakkimizda">
+    <h2>Hakkımızda</h2>
+    <p>TechniCare olarak amacımız; teknoloji ve kişisel bakım ürünlerini en güvenilir ve hızlı biçimde sunmak. Müşteri memnuniyeti her zaman önceliğimizdir.</p>
+  </section>
+
+  <section class="info" id="gizlilik">
+    <h2>Gizlilik Politikası</h2>
+    <p>KVKK’ya uygun olarak; kişisel verileriniz güvenle saklanır, üçüncü taraflarla paylaşılmaz.</p>
+  </section>
+
+  <footer id="iletisim">
+    <p>İletişim: +90 5xx xxx xx xx | info@technicare.com</p>
+    <p>&copy; 2025 TechniCare | Tüm hakları saklıdır.</p>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
