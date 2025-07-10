@@ -217,66 +217,105 @@
   </footer>
 
   <!-- Firebase ve Auth Logic -->
-  <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
-    import {
-      getAuth,
-      createUserWithEmailAndPassword,
-      signInWithEmailAndPassword,
-      signOut,
-      onAuthStateChanged
-    } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
-    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js';
+ <script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js';
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+  } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js';
+  import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics.js';
 
-    // Sizin Firebase konsolunuzdan aldığınız config:
-    const firebaseConfig = {
-      apiKey: "AIzaSyDXZxmX9Ps6zK8OTST_eqWeWCk6Il3D9M0",
-      authDomain: "technicare-auth.firebaseapp.com",
-      projectId: "technicare-auth",
-      storageBucket: "technicare-auth.firebasestorage.app",
-      messagingSenderId: "278003907575",
-      appId: "1:278003907575:web:d39e654659dce8bd860cf2",
-      measurementId: "G-VVPKJPJ154"
-    };
+  // Kendi Firebase config’inizi buraya yapıştırın
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "…",
+    appId: "…",
+    measurementId: "…"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-    const analytics = getAnalytics(app);
+  const app       = initializeApp(firebaseConfig);
+  const auth      = getAuth(app);
+  const analytics = getAnalytics(app);
 
-    async function signUp() {
-      const email = document.getElementById('email').value;
-      const pass  = document.getElementById('password').value;
-      try {
-        const uc = await createUserWithEmailAndPassword(auth, email, pass);
-        alert('Kayıt başarılı: ' + uc.user.email);
-      } catch (e) {
-        document.getElementById('auth-msg').textContent = e.code + ': ' + e.message;
-      }
+  // E-posta formatını basitçe kontrol eden fonksiyon
+  function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  async function signUp() {
+    const email = document.getElementById('email').value.trim();
+    const pass  = document.getElementById('password').value.trim();
+    const msgEl = document.getElementById('auth-msg');
+    msgEl.textContent = '';
+
+    if (!email) {
+      msgEl.textContent = 'Lütfen e-posta adresinizi girin.';
+      return;
+    }
+    if (!isValidEmail(email)) {
+      msgEl.textContent = 'Lütfen geçerli bir e-posta adresi girin.';
+      return;
+    }
+    if (!pass) {
+      msgEl.textContent = 'Lütfen şifrenizi girin.';
+      return;
     }
 
-    async function signIn() {
-      const email = document.getElementById('email').value;
-      const pass  = document.getElementById('password').value;
-      try {
-        const uc = await signInWithEmailAndPassword(auth, email, pass);
-        alert('Giriş başarılı: ' + uc.user.email);
-      } catch (e) {
-        document.getElementById('auth-msg').textContent = e.code + ': ' + e.message;
-      }
+    try {
+      const uc = await createUserWithEmailAndPassword(auth, email, pass);
+      alert('Kayıt başarılı: ' + uc.user.email);
+    } catch (e) {
+      msgEl.textContent = e.code + ': ' + e.message;
+    }
+  }
+
+  async function signIn() {
+    const email = document.getElementById('email').value.trim();
+    const pass  = document.getElementById('password').value.trim();
+    const msgEl = document.getElementById('auth-msg');
+    msgEl.textContent = '';
+
+    if (!email) {
+      msgEl.textContent = 'Lütfen e-posta adresinizi girin.';
+      return;
+    }
+    if (!isValidEmail(email)) {
+      msgEl.textContent = 'Lütfen geçerli bir e-posta adresi girin.';
+      return;
+    }
+    if (!pass) {
+      msgEl.textContent = 'Lütfen şifrenizi girin.';
+      return;
     }
 
-    async function signOutUser() {
-      await signOut(auth);
-      alert('Oturum kapatıldı.');
+    try {
+      const uc = await signInWithEmailAndPassword(auth, email, pass);
+      alert('Giriş başarılı: ' + uc.user.email);
+    } catch (e) {
+      msgEl.textContent = e.code + ': ' + e.message;
     }
+  }
 
-    window.signUp = signUp;
-    window.signIn = signIn;
-    window.signOutUser = signOutUser;
+  async function signOutUser() {
+    await signOut(auth);
+    alert('Oturum kapatıldı.');
+  }
 
-    onAuthStateChanged(auth, user => {
-      document.querySelector('.badge').textContent = user ? '1' : '0';
-    });
-  </script>
+  // HTML’e bağlı kalsın
+  window.signUp      = signUp;
+  window.signIn      = signIn;
+  window.signOutUser = signOutUser;
+
+  onAuthStateChanged(auth, user => {
+    document.querySelector('.badge').textContent = user ? '1' : '0';
+  });
+</script>
+
 </body>
 </html>
